@@ -23,3 +23,4 @@
 
 ## 使用
 
+* 启动 `python app/manage.py runserver [--port 9999 --dev true]`

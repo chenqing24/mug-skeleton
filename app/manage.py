@@ -48,8 +48,9 @@ def runserver(port, ip, debug, dev=False):
     def assets(path):
         yield static_file(path, root=settings.STATIC_PATH)
 
-
     run(app=app, host=ip, port=port, debug=debug, reloader=debug)
+    # TODO 使用gunicorn启动多进程，不再支持port和自定义传参，不能调试；如果debug，用原方法启动
+    # run(server='gunicorn', workers=4, app=app, host='0.0.0.0', port=9999, debug=debug, reloader=debug)
 
 
 @cmds.command()
