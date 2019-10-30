@@ -6,26 +6,6 @@ import click
 from bottle import static_file, Bottle, run, TEMPLATE_PATH
 from beaker.middleware import SessionMiddleware
 
-from app import settings
-from app.routes import Routes
-
-
-TEMPLATE_PATH.insert(0, settings.TEMPLATE_PATH)
-session_opts = {
-    'session.type': 'file',
-    'session.auto': True
-}
-
-app = SessionMiddleware(Bottle(), session_opts)
-
-# Bottle Routes
-app.wrap_app.merge(Routes)
-
-
-@app.wrap_app.route('/assets/<path:path>', name='assets')
-def assets(path):
-    yield static_file(path, root=settings.STATIC_PATH)
-
 
 @click.group()
 def cmds():
@@ -39,8 +19,36 @@ def cmds():
               help=u'Set application server ip!')
 @click.option('--debug', default=False,
               help=u'Set application server debug!')
-def runserver(port, ip, debug):
+@click.option('--dev', default=False,
+              help=u'Set run env is dev!') 
+def runserver(port, ip, debug, dev=False):
     click.echo('Start server at: {}:{}'.format(ip, port))
+
+    if dev and 'true' == str(dev).lower():
+        # 设置运行环境
+        os.environ['run_env']='dev'
+    # 加载bottle
+
+    from app import settings
+    from app.routes import Routes
+
+
+    TEMPLATE_PATH.insert(0, settings.TEMPLATE_PATH)
+    session_opts = {
+        'session.type': 'file',
+        'session.auto': True
+    }
+
+    app = SessionMiddleware(Bottle(), session_opts)
+
+    # Bottle Routes
+    app.wrap_app.merge(Routes)
+
+    @app.wrap_app.route('/assets/<path:path>', name='assets')
+    def assets(path):
+        yield static_file(path, root=settings.STATIC_PATH)
+
+
     run(app=app, host=ip, port=port, debug=debug, reloader=debug)
 
 
