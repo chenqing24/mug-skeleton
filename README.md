@@ -1,5 +1,7 @@
 # Mug Skeleton 马克杯脚手架
 
+![logo](logo_228x67.png)
+
 基于bottle + peewee的web api框架
 
 ## 特性
