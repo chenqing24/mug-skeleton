@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
+from beaker.util import parse_cache_config_options
+from beaker.cache import CacheManager
 from .common_utils import *
 
 
@@ -69,6 +71,19 @@ DB_CONNECT_USER     = 'root'
 DB_CONNECT_PASSWORD = 'my-secret-pw'
 DB_CONNECT_HOST     = '127.0.0.1'
 DB_CONNECT_PORT     = 3306
+
+
+###################
+#  cache相关
+###################
+cache_opts = {
+    'cache.data_dir': 'cache/data',
+    'cache.lock_dir': 'cache/lock',
+    'cache.type': 'file',
+    'cache.expire': 600,  # 默认缓存ttl 10分钟
+}
+
+cache = CacheManager(**parse_cache_config_options(cache_opts))
 
 
 ###################

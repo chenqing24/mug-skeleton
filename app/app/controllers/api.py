@@ -17,8 +17,10 @@ api_app.install(log_to_logger)
 
 @api_app.get('/')
 @jinja2_view('index.html')
+@cache.cache()
 @enable_cors
 def index():
+    print("This exec http")
     return {'get_url': api_app.get_url('/')}
 
 
