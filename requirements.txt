@@ -3,6 +3,7 @@ arrow==0.15.2
 autopep8==1.4.4
 Beaker==1.11.0
 binaryornot==0.4.4
+boddle==0.2.8
 bottle==0.12.17
 certifi==2019.9.11
 chardet==3.0.4

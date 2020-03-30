@@ -37,20 +37,6 @@
                     "remoteRoot": "."
                 }
             ]
-        },
-        {
-            "name": "Python: Module",
-            "type": "python",
-            "request": "launch",
-            "module": "enter-your-module-name-here",
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "Python: Current File (External Terminal)",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "externalTerminal"
         }
     ]
 }

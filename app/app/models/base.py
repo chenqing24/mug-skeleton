@@ -9,16 +9,17 @@ from ..settings import *
 
 
 # Connect to a MySQL database
-db = PooledMySQLDatabase(
-    DB_CONNECT_DB, 
-    user=DB_CONNECT_USER, 
-    password=DB_CONNECT_PASSWORD,
-    host=DB_CONNECT_HOST, 
-    port=DB_CONNECT_PORT,
-    max_connections=20,
-    autoconnect=True)
+# db = PooledMySQLDatabase(
+#     DB_CONNECT_DB, 
+#     user=DB_CONNECT_USER, 
+#     password=DB_CONNECT_PASSWORD,
+#     host=DB_CONNECT_HOST, 
+#     port=DB_CONNECT_PORT,
+#     max_connections=20,
+#     autoconnect=True)
 # db.connect()
 # db = connect(DB_CONNECT_URL)
+db = SqliteDatabase(DB_CONNECT_URL)
 
 
 class BaseModel(Model):

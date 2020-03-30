@@ -63,14 +63,17 @@ logger_orm.setLevel(logging.INFO)
 
 
 ###################
-#  db相关
+#  db相关，根据实际情况选择，切换在`models/base.py`
 ###################
-# 数据库连接
-DB_CONNECT_DB       = 'demo'
-DB_CONNECT_USER     = 'root'
-DB_CONNECT_PASSWORD = 'my-secret-pw'
-DB_CONNECT_HOST     = '127.0.0.1'
-DB_CONNECT_PORT     = 3306
+# MySQL数据库连接
+# DB_CONNECT_DB       = 'demo'
+# DB_CONNECT_USER     = 'root'
+# DB_CONNECT_PASSWORD = 'my-secret-pw'
+# DB_CONNECT_HOST     = '127.0.0.1'
+# DB_CONNECT_PORT     = 3306
+
+# sqlite数据库连接
+DB_CONNECT_URL = os.path.join(PROJECT_PATH, 'models', 'app.db')
 
 
 ###################
