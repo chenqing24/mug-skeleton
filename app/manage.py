@@ -27,6 +27,10 @@ def runserver(port, ip, debug, dev=False):
     if dev and 'true' == str(dev).lower():
         # 设置运行环境
         os.environ['run_env']='dev'
+
+    if 'true' == str(debug).lower():
+        debug = True
+
     # 加载bottle
 
     from app import settings

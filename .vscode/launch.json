@@ -12,6 +12,8 @@
             "console": "integratedTerminal",
             "args": [
                 "runserver",
+                "--debug",
+                "true",
                 "--port",
                 "19999",
                 "--dev",
