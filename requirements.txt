@@ -6,7 +6,7 @@ Beaker==1.11.0
 binaryornot==0.4.4
 boddle==0.2.8
 bottle==0.12.19
-certifi==2019.9.11
+certifi==2023.7.22
 chardet==3.0.4
 Click==7.0
 cookiecutter==1.6.0
